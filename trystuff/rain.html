@@ -1,0 +1,137 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>😂 Clone Army of Me</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial;
+    text-align: center;
+    color: white;
+
+    /* 🧠 Background spam */
+    background-image: url('me.jpg');
+    background-size: 150px;
+    animation: bgMove 10s linear infinite;
+}
+
+@keyframes bgMove {
+    from { background-position: 0 0; }
+    to { background-position: 300px 300px; }
+}
+
+h1 {
+    margin-top: 20px;
+    text-shadow: 0 0 10px black;
+}
+
+/* 😂 Floating clones */
+.clone {
+    position: absolute;
+    width: 80px;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100px) rotate(0deg); }
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* 🖱️ Cursor clones */
+.cursor-clone {
+    position: absolute;
+    width: 40px;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* Button chaos */
+button {
+    padding: 15px;
+    font-size: 18px;
+    background: gold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🤯 YOU HAVE BEEN CLONED 🤯</h1>
+
+<button onclick="spawnArmy()">CREATE MORE ME</button>
+<button onclick="roast()">CLICK IF BRAVE</button>
+
+<script>
+const imgSrc = "shas.jpeg";
+
+/* 🌧️ Falling clones */
+function createRain(){
+    let img = document.createElement("img");
+    img.src = imgSrc;
+    img.className = "clone";
+
+    img.style.left = Math.random()*100 + "vw";
+    img.style.animationDuration = (3 + Math.random()*5) + "s";
+
+    document.body.appendChild(img);
+
+    setTimeout(()=>img.remove(),8000);
+}
+
+setInterval(createRain, 200);
+
+/* 🖱️ Cursor trail */
+document.addEventListener("mousemove", e=>{
+    let img = document.createElement("img");
+    img.src = imgSrc;
+    img.className = "cursor-clone";
+
+    img.style.left = e.pageX + "px";
+    img.style.top = e.pageY + "px";
+
+    document.body.appendChild(img);
+
+    setTimeout(()=>img.remove(),500);
+});
+
+/* 🤯 Spawn army */
+function spawnArmy(){
+    for(let i=0;i<20;i++){
+        let img=document.createElement("img");
+        img.src=imgSrc;
+        img.style.position="absolute";
+        img.style.width="100px";
+        img.style.left=Math.random()*100+"vw";
+        img.style.top=Math.random()*100+"vh";
+
+        document.body.appendChild(img);
+    }
+}
+
+/* 😂 Roast AI */
+function roast(){
+    const roasts=[
+        "Bro even your clones are confused 😭",
+        "Too many you... system overloaded 💀",
+        "AI says: reduce duplicates immediately 🤖",
+        "You vs you = infinite loop 😂",
+        "This is not a website, it's a MULTIVERSE"
+    ];
+
+    alert(roasts[Math.floor(Math.random()*roasts.length)]);
+}
+</script>
+
+</body>
+</html>
